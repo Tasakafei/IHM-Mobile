@@ -22,8 +22,9 @@ delete $http.defaults.headers.common['X-Requested-With'];
     	console.log(socket);
     	var i;
     	socket.emit("notes", notes, function () {
-    		console.log("pushed")
-    	})
+    		console.log("pushed");
+			callbackFunc();
+    	});
     	/*io.socket.post("/notes",notes, function(body,JWR){
 	        	      console.log('Sails responded with: ', body);
 	        	      notes = [];
@@ -37,7 +38,7 @@ delete $http.defaults.headers.common['X-Requested-With'];
 	        });
 	        notes = [];
     	}*/
-    };
+    }
 
 	return {
 		add: add,

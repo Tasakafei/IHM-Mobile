@@ -17,6 +17,7 @@ angular.module('ihm')
 
 	$scope.push = function() {
 		NotesService.push(function(){
+			console.log("PUSHHHHHHHHHH");
 			$scope.notes = [];
 		})
 	}

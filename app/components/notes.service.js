@@ -1,6 +1,6 @@
 var app = angular.module('ihm');
 
-app.service('NotesService', ['$http',function($http) {
+app.service('NotesService', ['$http', 'socket',function($http, socket) {
 	var notes = []
 	function add(note){
 		note.id = notes.length;
@@ -19,13 +19,16 @@ app.service('NotesService', ['$http',function($http) {
 	}
 delete $http.defaults.headers.common['X-Requested-With'];
     function push(callbackFunc) {
-    	console.log(io.socket);
+    	console.log(socket);
     	var i;
-    	io.socket.post("/notes",notes, function(body,JWR){
+    	socket.emit("notes", notes, function () {
+    		console.log("pushed")
+    	})
+    	/*io.socket.post("/notes",notes, function(body,JWR){
 	        	      console.log('Sails responded with: ', body);
 	        	      notes = [];
 	        	      callbackFunc();
-    	});
+    	});*/
     	/*for(i = 0; i < notes.length; i++){
 	        io.socket.get("/notes",function serverResponded(body, JWR){
 	        	      console.log('Sails responded with: ', body);

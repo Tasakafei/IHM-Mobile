@@ -23,8 +23,10 @@ delete $http.defaults.headers.common['X-Requested-With'];
     	var i;
     	socket.emit("notes", notes, function () {
     		console.log("pushed");
+			notes=[];
 			callbackFunc();
     	});
+		var notes=[];
     	/*io.socket.post("/notes",notes, function(body,JWR){
 	        	      console.log('Sails responded with: ', body);
 	        	      notes = [];

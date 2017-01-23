@@ -1,7 +1,7 @@
 'use strict';
 angular.module('ihm')
 .factory('socket', function ($rootScope) {
-  var socket = io.connect('https://prototable.herokuapp.com');
+  var socket = io.connect('http://prototable.herokuapp.com');
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {

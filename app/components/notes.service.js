@@ -4,17 +4,31 @@ app.service('NotesService', ['$http', 'socket',function($http, socket) {
 	var notes = [];
 
 	socket.on('tabCreateNote', function(note) {
-      console.log("tab create note");
-      console.log(note);
-      add(note);
-    })
+		console.log("tab create note");
+		console.log(note);
+		add(note);
+	});
+
+
+	socket.on('removeNote', function(noteId) {
+		remove(noteId);
+	});
 
 	function add(note){
-		console.log("add note function")
+		console.log("add note function");
 		note.id = notes.length;
 		notes.push(note);
 	}
-	
+
+	function remove(noteId) {
+		var note = notes.filter(function(note) {
+			return note.id === noteId;
+		});
+
+		notes.splice(notes.indexOf(note), 1);
+	}
+
+
 	function get(){
 		return notes;
 	}

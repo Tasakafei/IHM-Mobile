@@ -2,7 +2,7 @@
 
 angular.module('ihm')
 .controller('EditViewCtrl', ['$route', '$routeParams', '$location','$scope','NotesService','$mdColorPalette',
-  function($route, $routeParams, $location,$scope,NotesService,$mdColorPalette) {
+  function($route, $routeParams, $location,$scope,NotesService,$mdColorPalette, socket) {
     var baseColor = Object.keys($mdColorPalette);
     $scope.colors =["red","purple","indigo","teal","orange","green"];
     console.log(baseColor);
@@ -27,6 +27,7 @@ angular.module('ihm')
       }
       $location.path('/');
     }
+
     //dismiss all changes and go back to edit mode
     $scope.goBack = function() {
       $location.path('/');
@@ -34,9 +35,9 @@ angular.module('ihm')
 
     $scope.selectTheme = function (color) {
       console.log("select color "+color )
-     
-        $scope.primary = color;
+      
+      $scope.primary = color;
     };
 
 
-}]);
+  }]);

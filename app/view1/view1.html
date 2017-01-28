@@ -4,33 +4,29 @@
     <md-toolbar layout="row" class="md-teal">
       <div class="md-toolbar-tools">
         <span>Normal</span>
- <span flex></span>
-<md-button class="md-icon-button" aria-label="Send" ng-click="push()" ng-hide="notes.length == 0" >
-            <ng-md-icon icon="send" style="fill:#FFFFFF" ></ng-md-icon>
-</md-button>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Send" ng-click="push()" ng-hide="notes.length == 0" >
+          <ng-md-icon icon="send" style="fill:#FFFFFF" ></ng-md-icon>
+        </md-button>
       </div>
     </md-toolbar>
 
-
-
-
-
-<md-content>
+    <md-content>
      <md-list flex> 
-        <md-list-item class="md-3-line"  ng-repeat="note in notes" ng-click="changeView(note)">
-         <div class="md-list-item-text" layout="column" >
+      <md-list-item class="md-3-line"  ng-repeat="note in notes" ng-click="changeView(note)">
+       <div class="md-list-item-text" layout="column" >
          <span style="background-color: {{note.color}};width:100%;height:8px;"></span>
-            <h3 >{{ note.title }}</h3>
-            <p>{{ note.content }}</p>
+         <h3 >{{ note.title }}</h3>
+         <p>{{ note.content }}</p>
 
-          </div>
-        </md-list-item>
-        <md-divider ></md-divider>
-       </md-list>
-</md-content>
+       </div>
+     </md-list-item>
+     <md-divider ></md-divider>
+   </md-list>
+ </md-content>
 
-        <md-button class="md-fab" style="position:absolute; right:20px;bottom:20px;" aria-label="Add a note" ng-click="new()">
-            <ng-md-icon icon="add" style="fill:#FFFFFF"></ng-md-icon>
-        </md-button>
+ <md-button class="md-fab" style="position:absolute; right:20px;bottom:20px;" aria-label="Add a note" ng-click="new()">
+  <ng-md-icon icon="add" style="fill:#FFFFFF"></ng-md-icon>
+</md-button>
 </div>
 </div>

@@ -4,6 +4,7 @@ angular.module('ihm')
   var socket = io.connect('http://localhost:8000');
   return {
     on: function (eventName, callback) {
+      console.log("socket on called");
       socket.on(eventName, function () {
         var args = arguments;
         $rootScope.$apply(function () {

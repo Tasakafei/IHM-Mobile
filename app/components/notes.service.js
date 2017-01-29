@@ -14,12 +14,14 @@ app.service('NotesService', ['$http', 'socket',function($http, socket) {
 		remove(noteId);
 	});
 
+	function setLogin(newLogin){
+		login = newLogin;
+	}
 	function add(note){
-		console.log("add note function");
 		note.id = notes.length;
+		note.login = login;
 		notes.push(note);
 	}
-
 	function remove(noteId) {
 		var note = notes.filter(function(note) {
 			return note.id === noteId;
@@ -52,6 +54,7 @@ app.service('NotesService', ['$http', 'socket',function($http, socket) {
 	}
 
 	return {
+		setLogin: setLogin,
 		add: add,
 		get: get,
 		getById: getById,

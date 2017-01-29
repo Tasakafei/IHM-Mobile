@@ -9,13 +9,16 @@ var app = angular.module('ihm', [
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
       .when("/", {
-        templateUrl: 'view1/view1.html'
+        templateUrl: 'loginView/loginView.html'
       })
       .when("/edit/:note_id",{
-      	templateUrl: 'editView/editView.html'
+        templateUrl: 'editView/editView.html'
       })
       .when("/add/",{
-      	templateUrl: 'editView/editView.html'
+        templateUrl: 'editView/editView.html'
+      })
+      .when("/list/", {
+        templateUrl: 'view1/view1.html'
       })
       .otherwise({
           redirectTo: '/'

@@ -25,12 +25,12 @@ angular.module('ihm')
         console.log("update existing note "+JSON.stringify($scope.note))
 
       }
-      $location.path('/');
+      $location.path('/list/');
     }
 
     //dismiss all changes and go back to edit mode
     $scope.goBack = function() {
-      $location.path('/');
+      $location.path('/list/');
     }
 
     $scope.selectTheme = function (color) {

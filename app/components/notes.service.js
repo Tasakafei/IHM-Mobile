@@ -2,7 +2,7 @@ var app = angular.module('ihm');
 
 app.service('NotesService', ['$http', 'socket',function($http, socket) {
 	var notes = [];
-
+	var idCounter = 0;
 	socket.on('tabCreateNote', function(note) {
 		console.log("tab create note");
 		console.log(note);
@@ -47,12 +47,22 @@ app.service('NotesService', ['$http', 'socket',function($http, socket) {
 
 	function push(callbackFunc) {
 		console.log("push function");
+		notes.map(function (elem) {
+			elem.localId = idCounter++;
+		});
 		socket.emit("notes", notes, function (){
 			console.log("pushed");
 		});
 		callbackFunc();
 	}
 
+	socket.on("updateIDSmartphone", function(noteSent) {
+		notes.forEach(function(note) {
+			if (!note.id && noteSent.localId === note.localId) {
+				note.id = noteSent.id;
+			}
+		})
+	});
 	return {
 		setLogin: setLogin,
 		add: add,
